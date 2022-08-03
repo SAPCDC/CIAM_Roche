@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<head>
+
+    <script src="assets/js/Gigya.js"></script>
+    <script src="assets/js/IndexedDB.js"></script>
+
+
+</head>
+<body  onload="load();">
+    
+    <div style="background-image: url('assets/img/LandingBack.jpg'); background-size: cover;">
+
+        <script type="text/javascript">
+
+            function services(flag) {
+
+                if (flag == "Ordering") {
+
+
+                    //alert("your Ordering site will be open in new tab");
+                    window.open("Services/Ordering.html", "_blank");
+                }
+
+                if (flag == "Returns") {
+
+
+                    window.open("Services/Returns.html", "_blank");
+                }
+            }
+
+            var session_UID = CheckLogin();
+            if (session_UID != null || typeof session_UID != "undefined") {
+                var mytable = "<table width=\"100%\"><tbody><tr><td><div id=\"header\"></div></td></tr><tr><td><br/><br/>";
+                mytable +=
+                    "<section id=\"services\" class=\"services\"><div class=\"container\"><div class=\"section-title\"><h2 id=\"dname\"></h2><p style=\"text-colour:white\">You are in B2B Portal.<br/>Below are the list of applications which you have access.</p></div><div class=\"row\">"
+
+                const roleids = sessionStorage.getItem("roles");
+
+                roleids.split(",").forEach(function (roleid) {
+                    role = localStorage.getItem(roleid);
+                    if (role == "Delegated Admin") {
+
+                    }
+                    else {
+                        mytable += "<div class=\"col-lg-4 col-md-6 d-flex align-items-stretch\"><div class=\"icon-box\"><div class=\"icon\"><i class=\"fas fa-heartbeat\"></i></div><h4><a href=\"\" onclick=\"services('" + role + "')\">" + role + "</a></h4><p>a stated intention, either spoken or written, to engage in a commercial transaction for specific products or services</p></div></div>"
+                    }
+                })
+
+                console.log(mytable);
+
+                mytable += "</div></div></section ></td></tr><tr><td>"
+                mytable +=
+                    "<div id=\"footer\"></div>" +
+                    "</td></tr ></tbody ></table >";
+
+                document.write(mytable);
+
+
+                document.getElementById("dname").innerText = "Welcome : " + sessionStorage.getItem("SName") + "    " + "| Account for : " + sessionStorage.getItem("SOrgName");
+                //if (localStorage.getItem("DACheck") == "Yes") {
+                //    document.getElementById("DAT").style.display = "block";
+                //}
+                //else {
+                //    document.getElementById("DAT").style.display = "none";
+                //}
+
+
+                //var session_UID = CheckLogin();
+            }
+
+
+
+        </script>
+        <script type="text/javascript" src="https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA"></script>
+        <script src="assets/js/jquery.min.js"></script>
+    </div>
+</body>
+</html>
