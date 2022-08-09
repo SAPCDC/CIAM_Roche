@@ -34,16 +34,15 @@
 <body onload="load();">
 
 
-    <table style="width:100%">
+    <table style="width:100%;height:100%">
         <tr>
             <td><div id="header"></div></td>
         </tr>
         <tr>
             <td>
-                <br />
-                <br />
+
                 <!-- ======= Hero Section ======= -->
-                <section id="hero" style="vertical-align:top">
+                <section id="hero">
                     <div class="container">
                         <h1>Welcome to Roche CIAM</h1>
                         <h6>
@@ -58,67 +57,89 @@
 
                             <div style="vertical-align:central">
                                 <!--<div class="col-lg-4 d-flex align-items-stretch">
-                                    <div class="content">
-                                        <h3>B2B Launchpad</h3>
-                                        <p>
-                                            Strengthen your business with powerful analytics by collaborating with online medical pharmacy.
-                                        </p>
-                                        <div class="text-center">
-                                            <a href="#" class="more-btn" onclick="SignInScreen('b2b');"><strong>Login</strong></a>
-                                            <a href="Signupb2b.html" class="more-btn"><strong>Register Organization</strong></a>
+                    <div class="content">
+                        <h3>B2B Launchpad</h3>
+                        <p>
+                            Strengthen your business with powerful analytics by collaborating with online medical pharmacy.
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="more-btn" onclick="SignInScreen('b2b');"><strong>Login</strong></a>
+                            <a href="Signupb2b.html" class="more-btn"><strong>Register Organization</strong></a>
+                        </div>
+                    </div>-->
+                            </div>
+                            <div class="col-lg-8 d-flex align-items-stretch">
+                                <div class="icon-boxes d-flex flex-column justify-content-center">
+                                    <div class="row">
+                                        <div class="col-xl-4 d-flex align-items-stretch">
+                                            <div class="icon-box mt-4 mt-xl-0">
+                                                <table><tr><td><img src="assets/img/b2bicon1.jpg" ; height="50" ;width="40px" /></td><td valign="middle"><br /><h4>B2B Portal</h4></td></tr></table>
+
+                                                <br />
+                                                <p style="text-align:left">Strengthen your organization by collaborating with Roche business.</p>
+
+                                                <br />
+                                                <br /><br />
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <button class="appointment-btn" onclick="SignInScreen('b2b');" onmouseover="t('b2b');">Login</button>
+                                                        </td>
+                                                        <td><br /></td>
+                                                        <td>
+                                                            <button class="appointment-btn" onclick="SignUpScreen('b2b');" onmouseover="t('b2b');">Register</button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!--<a href="Loginb2b.html" id="ICL" class="appointment-btn scrollto">Login</a>-->
+
+
+
+
+                                            </div>
                                         </div>
-                                    </div>-->
-                                </div>
-                                <div class="col-lg-8 d-flex align-items-stretch">
-                                    <div class="icon-boxes d-flex flex-column justify-content-center">
-                                        <div class="row">
-                                            <div class="col-xl-4 d-flex align-items-stretch">
-                                                <div class="icon-box mt-4 mt-xl-0">
-                                                    <i class="bx bx-receipt"></i>
-                                                    <h4>B2B Portal</h4>
-                                                    <p style="text-align:left">Strengthen your organization by collaborating with Roche business.</p>
+                                        <div class="col-xl-4 d-flex align-items-stretch">
+                                            <div class="icon-box mt-4 mt-xl-0">
+                                                <table><tr><td><img src="assets/img/b2cicon.png" ; height="40" ;width="40px" /></td><td valign="middle"><br /><h4>B2C Portal</h4></td></tr></table>
+                                                <br />
+                                                <p style="text-align:left">Order your medical supplies with Roche B2C Application and get it delivered at the comfort of your home.</p>
+                                                <table>
+                                                    <tr>
 
-                                                    <div class="text-center">
-                                                        <a href="#" id="ICL" class="appointment-btn scrollto" onclick="SignInScreen('b2b');"><strong>LOG IN</strong></a>
-                                                        <br />
-                                                        <br />
+                                                        <td>
+                                                            <br />
+                                                            <br />
+                                                            <button class="appointment-btn" onclick="SignInScreen('b2c');" onmouseover="t('b2c');">Login</button>
+                                                        </td>
+                                                        <td>
+                                                            <br />
+                                                            <br />
+                                                            <button class="appointment-btn" onclick="SignUpScreen('b2c');" onmouseover="t('b2c')">Register</button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
 
 
-                                                        <a href="Signupb2b.html">Register Organization</a>
-
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4 d-flex align-items-stretch">
-                                                <div class="icon-box mt-4 mt-xl-0">
-                                                    <i class="bx bx-cube-alt"></i>
-                                                    <h4>B2C Application</h4>
-                                                    <p>Order your medical supplies with Roche B2C Application and get it delivered at the comfort of your home.</p>
-
-                                                    <a href="Loginb2c.html" id="ICL" class="appointment-btn">Login</a>
-                                                    <br />
-                                                    <br />
-                                                    <a href="Signupb2c.html" class="appointment-btn">Sign up</a>
-                                                </div>
 
                                             </div>
-                                        </div><!-- End .content-->
-                                    </div>
+
+                                        </div>
+                                    </div><!-- End .content-->
+
                                 </div>
 
                             </div>
-                       
+
+                        </div>
+
                     </section><!-- End Why Us Section -->
+
                 </section>
+                <div id="footer"></div>
             </td>
         </tr>
         
-        <tr>
-            
-            <td><br /><br /><br /><br /><br /><br /><div id="footer"></div></td>
-        </tr>
+        
     </table>
 
 
@@ -127,14 +148,69 @@
     <!-- Vendor JS Files -->
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/Gigya.js"></script>
+    <script id="gigya" src="assets/js/Gigya.js"></script>
     <script src="assets/js/IndexedDB.js"></script>
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script type="text/javascript" src="https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA"></script>
+    <script id="b2b"></script>
+    <script id="b2c"></script>
+    <script type="text/javascript">
+        function t(flag) {
+
+
+
+            // Load the script
+            //alert(flag)
+            const script = document.createElement("script");
+            script.id = "gig";
+            if (flag == 'b2b') {
+                script.src = 'https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA';
+            }
+            else {
+
+                script.src = 'https://cdns.gigya.com/js/gigya.js?apiKey=4_zU_l5sFaCUWaU5W-0KFDzw';
+            }
+            script.type = 'text/javascript';
+            script.addEventListener('load', () => {
+                console.log('jQuery ${$.fn.jquery} has been loaded successfully!');
+                document.getElementById("gig").remove();
+                // use jQuery below
+            });
+            document.head.appendChild(script);
+        //}
+            
+            //if (flag == 'b2b') {
+
+            //    $('head').append('<script src="https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA">')
+                
+            //    //$('<script id="b2b">').attr('src', "https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA").appendTo('head');
+
+            //    //$('script[src="https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA"]').add();
+            //    //document.getElementById("Gigya").src = "https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA";
+                
+            //}
+            //if (flag == 'b2c') {
+
+            //    $('head').append('<script src="https://cdns.gigya.com/js/gigya.js?apiKey=4_zU_l5sFaCUWaU5W-0KFDzw">')
+
+            //    //$('<script id="b2c">').attr('src', "https://cdns.gigya.com/js/gigya.js?apiKey=4_zU_l5sFaCUWaU5W-0KFDzw").appendTo('head');
+
+            //    //document.getElementById("Gigya").src = "https://cdns.gigya.com/js/gigya.js?apiKey=4_zU_l5sFaCUWaU5W-0KFDzw";
+                 
+            // }
+
+            
+            
+        }
+        
+
+    </script>
+
+
+    <!--<script type="text/javascript" src="https://cdns.gigya.com/js/gigya.js?apiKey=4_oMwlIxZWipk7JkeWZ-b2LA"></script>-->
 
     <!-- Template Main JS File -->
 

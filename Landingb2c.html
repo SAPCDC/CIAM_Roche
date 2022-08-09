@@ -53,30 +53,41 @@
 
             mytable += "<table><tr>";
 
-            const roleids = sessionStorage.getItem("roles");
+            //const roleids = sessionStorage.getItem("roles");
 
-            roleids.split(",").forEach(function (roleid) {
-                role = localStorage.getItem(roleid);
-                if (role == "Delegated Admin") {
+            //roleids.split(",").forEach(function (roleid) {
+                //role = localStorage.getItem(roleid);
+                //if (role == "Delegated Admin") {
 
                     //opendelegateadmin(sessionStorage.getItem('OrgID'));
-                }
-                else {
-                    mytable += "<td>&nbsp;</td><td onclick=\"services('" + role + "')\"><div><div class=\"icon-box\"><div class=\"icon\"><i class=\"fas fa-heartbeat\"></i></div><h4><a href=\"\" onclick=\"services('" + role + "')\">" + role + "</a></h4><p>Improve wholesale medical equipment ordering and returns efficiency with Roche web-based application</p></div></div></td>"
-                }
-            })
+                //}
+                //else {
+            
+            mytable += "<td onclick =\"services()\"><div><div class=\"icon-box\"><div class=\"icon\"><i class=\"fas fa-heartbeat\"></i></div><h4><a href=\"\" onclick=\"services()\">Healthcare Services</a></h4><p>Improve wholesale medical equipment ordering and returns efficiency with Roche web-based application</p></div></div></td>"
+            
+            mytable += "<td onclick=\"services()\"><div><div class=\"icon-box\"><div class=\"icon\"><i class=\"fas fa-heartbeat\"></i></div><h4><a href=\"\" onclick=\"services()\">Medical Prescription</a></h4><p>Improve wholesale medical equipment ordering and returns efficiency with Roche web-based application</p></div></div>"
+            
+            mytable += "</td></tr><tr>"
+            
+            
+            mytable += "<td onclick=\"services()\"><div><div class=\"icon-box\"><div class=\"icon\"><i class=\"fas fa-heartbeat\"></i></div><h4><a href=\"\" onclick=\"services()\">Pharmacy</a></h4><p>Improve wholesale medical equipment ordering and returns efficiency with Roche web-based application</p></div></div></td>"
+            
+            mytable += "<td onclick=\"services()\"><div><div class=\"icon-box\"><div class=\"icon\"><i class=\"fas fa-heartbeat\"></i></div><h4><a href=\"\" onclick=\"services()\">Online Prescription</a></h4><p>Improve wholesale medical equipment ordering and returns efficiency with Roche web-based application</p></div></div>"
+            mytable += "</td>"
+            //}
+            //})
 
             console.log(mytable);
 
             mytable += "</tr></table></div></div></section ></td></tr><tr><td>"
             mytable +=
-                "<hr style=\"height: 27pt;visibility: hidden\" /><div id=\"footer\"></div>" +
+                "<hr style=\"height: 35px;visibility: hidden\" /><div id=\"footer\"></div>" +
                 "</td></tr ></tbody ></table >";
 
             document.write(mytable);
 
 
-            document.getElementById("dname").innerText = "Welcome to B2B Portal";
+            document.getElementById("dname").innerText = "Welcome to B2C Portal";
             //document.getElementById("dname").innerText = "Welcome : " + sessionStorage.getItem("SName") + "    " + "| Account for : " + sessionStorage.getItem("SOrgName");
             //if (localStorage.getItem("DACheck") == "Yes") {
             //    document.getElementById("DAT").style.display = "block";

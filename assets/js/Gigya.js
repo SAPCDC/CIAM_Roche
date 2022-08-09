@@ -10,18 +10,42 @@ function load() {
 function SignInScreen(flag) {
     
     //load();
+    
     sessionStorage.setItem("flag", flag);
     customLangParams = {
 
         this_field_is_required: 'Please enter %fieldname'
     };
-    if (flag == 'b2c') {
-        
+    
+
+    if (flag == 'b2b') {
+        console.log(flag);
+        localStorage.setItem("485c9a75-2633-4f90-b48d-dd2b3a891d86", "Delegated Admin");
+        localStorage.setItem("cbdc0b70-6d69-4946-8443-060de6fbefbc", "Ordering");
+        localStorage.setItem("8de8cd93-103f-4277-a8df-e7a697d75d14", "Returns");
         gigya.accounts.showScreenSet({
             screenSet: 'Online_Medical-RegistrationLogin',
             startScreen: 'gigya-login-screen',
             customLang: customLangParams,
-            //containerID: 'divsignin'
+            onHide: hide
+            
+        });
+        gigya.accounts.addEventHandlers({
+            onLogin: onb2bLogin
+
+        });
+
+    
+
+    }
+
+    if (flag == 'b2c') {
+        console.log(flag);
+        gigya.accounts.showScreenSet({
+            screenSet: 'Online_Medical-RegistrationLogin',
+            startScreen: 'gigya-login-screen',
+            customLang: customLangParams,
+            onHide: hide
         });
 
         gigya.accounts.addEventHandlers({
@@ -30,30 +54,13 @@ function SignInScreen(flag) {
         });
 
     }
-
-    if (flag == 'b2b') {
-
-        localStorage.setItem("485c9a75-2633-4f90-b48d-dd2b3a891d86", "Delegated Admin");
-        localStorage.setItem("cbdc0b70-6d69-4946-8443-060de6fbefbc", "Ordering");
-        localStorage.setItem("8de8cd93-103f-4277-a8df-e7a697d75d14", "Returns");
-        gigya.accounts.showScreenSet({
-            screenSet: 'Online_Medical-RegistrationLogin',
-            startScreen: 'gigya-login-screen',
-            customLang: customLangParams
-            
-        });
-        gigya.accounts.addEventHandlers({
-            onLogin: onb2bLogin
-
-        });
-    }
     
     
 }
 function onb2bLogin(response) {
     console.log("Onb2bLogin:" + JSON.stringify(response));
     let UID = response.UID;
-
+    sessionStorage.setItem("CUID", UID);
     var params = {
         "UID": UID,
         "include": "groups,profile"
@@ -76,6 +83,7 @@ function onb2bLogin(response) {
             const Data = SUID.split(",");
             sessionStorage.setItem("SUID", Data[0]);
             sessionStorage.setItem("SName", Data[1]);
+            //alert(Data[2]);
             sessionStorage.setItem("SProvider", Data[2]);
             sessionStorage.setItem("SOrgName", Data[3]);
             var session_UID = sessionStorage.getItem("SUID");
@@ -85,6 +93,10 @@ function onb2bLogin(response) {
 
                 window.location = 'index.html';
 
+            }
+            else if (sessionStorage.getItem("DACheck") == "Yes") {
+                opendelegateadmin(sessionStorage.getItem("OrgID"));
+                sessionStorage.clear();
             }
             else {
                 //console.log(session_UID);
@@ -102,14 +114,14 @@ function onb2cLogin(response) {
     let DBName = "Users";
     let Table = "Users_Info";
     ProcessDB(DBName, Table, response, key);
-
-    gigya.accounts.showScreenSet({
-        screenSet: 'Online_Medical-RegistrationLogin',
-        startScreen: 'gigya-tfa-verification-screen',
-        customLang: customLangParams,
-        onAfterSubmit: onTb2cLogin,
-        containerID: 'divsignin'
-    });
+    onTb2cLogin(response);
+    //gigya.accounts.showScreenSet({
+    //    screenSet: 'Online_Medical-RegistrationLogin',
+    //    startScreen: 'gigya-tfa-verification-screen',
+    //    customLang: customLangParams,
+    //    onAfterSubmit: onTb2cLogin,
+    //    //containerID: 'divsignin'
+    //});
     
 
 
@@ -120,7 +132,7 @@ function onb2cLogin(response) {
         getUID(DBName, Table, UID).then(function (SUID) {
             const Data = SUID.split(",");
             sessionStorage.setItem("SUID", Data[0]);
-            sessionStorage.setItem("SName", "Roche");
+            sessionStorage.setItem("SName", Data[1]);
             sessionStorage.setItem("SProvider", Data[2]);
             var session_UID = sessionStorage.getItem("SUID");
             var session_Name = sessionStorage.getItem("SName");
@@ -167,7 +179,7 @@ function Store(flag)
 
 }
 function SignUpScreen(flag) {
-    load();
+    //load();
     //let flag = localStorage.getItem("flag");
     console.log(flag);
     //window.location = "Register.html";
@@ -181,7 +193,8 @@ function SignUpScreen(flag) {
             screenSet: 'Online_Medical-RegistrationLogin',
             startScreen: 'gigya-register-screen',
             customLang: customLangParams,
-            containerID: 'divsignup'
+            onHide:hide
+            //containerID: 'divsignup'
         });
     }
 
@@ -191,7 +204,8 @@ function SignUpScreen(flag) {
             screenSet: 'Online_Medical-OrganizationRegistration',
             startScreen: 'gigya-org-register-screen',
             customLang: customLangParams,
-            containerID: 'divsignup'
+            //containerID: 'divsignup'
+            onHide: hide
         });
 
     }
@@ -202,17 +216,31 @@ function ShowEditScreen() {
     gigya.accounts.showScreenSet({
         screenSet: 'Online_Medical-ProfileUpdate',
         startScreen: 'gigya-update-profile-screen',
-        containerID: 'profile',
+        //containerID: 'profile',
         onAfterSubmit: Update
 
     });
 
 }
 
-function opendelegateadmin(orgid) {
-    alert(orgid);
+function hide() {
 
-    gigya.accounts.b2b.openDelegatedAdminLogin({ "orgId": orgid });
+    
+    if (sessionStorage.getItem("CUID") == null || typeof sessionStorage.getItem("CUID") == "undefined") {
+        
+        location.reload();
+    }
+
+    
+
+}
+
+function opendelegateadmin(orgid) {
+    //alert(orgid);
+    var params = {
+        "orgId": orgid
+    }
+    gigya.accounts.b2b.openDelegatedAdminLogin(params);
 }
 
 async function Update(response) {
@@ -282,7 +310,7 @@ function SignOut() {
         if (response.errorCode == 0) {
 
             sessionStorage.clear()
-            alert('Logged out');
+            //alert('Logged out');
             window.location.href = 'index.html';
 
 
@@ -307,27 +335,31 @@ function ForgotPass() {
         screenSet: 'Online_Medical-RegistrationLogin',
         startScreen: 'gigya-reset-password-screen',
         customLang: customLangParams,
-        containerID: 'divsignin'
+        //containerID: 'divsignin'
     });
     
 }
 
 function passwordreset() {
     
-    var elem = document.getElementById('passchangesuccess');
-    if (typeof elem !== 'undefined' && elem !== null) {
-        document.getElementById('passchangesuccess').onclick = function () {
-            SignOut();
-        };
-    }
+    document.getElementById('passchangesuccess').onclick = function () {
+        SignOut();
+    };
+    //var elem = document.getElementById('passchangesuccess');
+    //alert(elem);
+    //if (typeof elem !== 'undefined' && elem !== null) {
+    //    document.getElementById('passchangesuccess').onclick = function () {
+    //        SignOut();
+    //    };
+    //}
 }
 
 function cancel() {
 
-    var elem = document.getElementById('Cancel');
+    var elem = document.getElementById('PCancel');
     if (typeof elem !== 'undefined' && elem !== null) {
-        alert('clicked');
-        document.getElementById('Cancel').onclick = function () {
+        //alert('clicked');
+        document.getElementById('PCancel').onclick = function () {
             window.location = 'MyProfile.html';
         };
     }
@@ -345,7 +377,7 @@ function ChangePassScreen() {
         screenSet: 'Online_Medical-ProfileUpdate',
         startScreen: 'gigya-change-password-screen',
         customLang: customLangParams,
-        containerID: 'divsignup',
+        //containerID: 'divsignup',
         onAfterSubmit: passwordreset
     });
 }

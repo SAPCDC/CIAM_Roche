@@ -28,8 +28,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-
-    <script type="text/javascript" src="assets/js/IndexedDB.js"></script>
+    
     <script>
         $(function () {
             $('a').each(function () {
@@ -49,7 +48,7 @@
         //session_Email = 'here';
         //alert(session_Email);
 
-        if (session_UID == null || typeof session_UID == "undefined") {
+        if (session_UID == null || typeof session_UID === "undefined") {
 
             //document.getElementById("LN").style.display = "block";
             //document.getElementById("RS").style.display = "block";
@@ -59,38 +58,43 @@
             document.getElementById("MP").style.display = "none";
             document.getElementById("CP").style.display = "none";
             document.getElementById("LO").style.display = "none";
-            document.getElementById("info").style.display = "none";
+            //document.getElementById("info").style.display = "none";
 
 
         }
         else {
 
             if (flag == 'b2c') {
-                document.getElementById("info").innerText = "Hello," + " " + session_Name;
+                //document.getElementById("info").innerText = "Hello," + " " + session_Name;
                 document.getElementById("HMLb2c").style.display = "block";
                 document.getElementById("HMLb2b").style.display = "none";
             }
             if (flag == 'b2b') {
-                document.getElementById("info").innerText = "Hello," + " " + session_Name + "\n" + "Account for : " + session_OrgName;
-                document.getElementById("info").style.font  = "18px"
+                //document.getElementById("info").innerText = "Hello," + " " + session_Name + "\n" + "Account for : " + session_OrgName;
+                //document.getElementById("info").style.font  = "18px"
                 document.getElementById("HMLb2b").style.display = "block";
                 document.getElementById("HMLb2c").style.display = "none";
             }
             
             document.getElementById("MP").style.display = "block";
-            if (session_Provider == null || session_Provider == "") {
+            //alert(session_Provider);
+            if (session_Provider == null || typeof session_Provider === "undefined") {
+                alert('ok');
                 document.getElementById("CP").style.display = "block";
             }
             else {
+                //alert('no');
                 document.getElementById("CP").style.display = "none";
             }
             document.getElementById("HM").style.display = "none";
 
             //document.getElementById("RS").style.display = "none";
-            document.getElementById("info").style.display = "block";
+            //document.getElementById("info").style.display = "block";
             document.getElementById("LO").style.display = "block";
             //window.location.href = 'Login.html';
         }
+
+        
 
 
     </script>
@@ -99,22 +103,7 @@
 
 <body>
 
-    <!-- ======= Top Bar ======= -->
-    <div id="topbar" class="d-flex align-items-center fixed-top">
-        <div class="container d-flex justify-content-between">
-            <div class="contact-info d-flex align-items-center">
 
-
-            </div>
-            <div class="d-none d-lg-flex social-links align-items-center">
-                
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-            </div>
-        </div>
-    </div>
 
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
@@ -124,24 +113,28 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
+
                     <li><a id="HM" class="nav-link" href="index.html">Home</a></li>
                     <li><a id="HMLb2b" class="nav-link" href="Landingb2b.html">Home</a></li>
                     <li><a id="HMLb2c" class="nav-link" href="Landingb2c.html">Home</a></li>
                     <li><a id="MP" class="nav-link" href="MyProfile.html">My Profile</a></li>
-                    <li><a id="CP" class="nav-link" href="ChangePass.html">Change Password</a></li>
+                    <li><a id="CP" class="nav-link" href="ChangePassword.html">Change Password</a></li>
                     <li><a id="LO" class="nav-link" href="LogOut.html">Logout</a></li>
-                    
-                    
+
+
                 </ul>
-                <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </p>
-                <a id="info" href="MyProfile.html"><strong></strong></a>
+                <!--<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </p>
+                <a id="info" href="MyProfile.html"><strong></strong></a>-->
             </nav>
         </div>
 
     </header>
+    <script src="assets/js/Gigya.js"></script>
+    <script id="Gigya"></script>
     
+
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    </body>
+</body>
 
 </html>
